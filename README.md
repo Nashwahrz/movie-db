@@ -1,7 +1,7 @@
 
 <div> 
 <a ><strong> Nama : Nashwa Harzathi Rahma</strong></a>
-<a> Nim : 2301091018</a>
+<p> Nim : 2301091018</p>
 </div>
 
 <p align="center">
