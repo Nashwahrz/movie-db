@@ -40,13 +40,22 @@
 
 
 
-    {{-- Year --}}
-    <div class="mb-3 row">
-        <label for="year" class="col-sm-2 col-form-label">Year</label>
-        <div class="col-sm-10">
-            <input type="number" class="form-control" id="year" name="year" required min="1900" max="{{ date('Y') }}">
-        </div>
+   {{-- Year --}}
+<div class="mb-3 row">
+    <label for="year" class="col-sm-2 col-form-label">Year</label>
+    <div class="col-sm-10">
+        <select class="form-select" id="year" name="year" required>
+            <option value="" disabled selected>Pilih Tahun</option>
+            @php
+                $currentYear = date('Y');
+                for ($year = $currentYear; $year >= 1990; $year--) {
+                    echo "<option value=\"$year\">$year</option>";
+                }
+            @endphp
+        </select>
     </div>
+</div>
+
 
     {{-- Actors --}}
     <div class="mb-3 row">
