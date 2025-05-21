@@ -23,10 +23,21 @@
             <li class="nav-item">
               <a class="nav-link  {{ request()->is('/') ? 'active' : '' }}" aria-current="page" href="/">Home</a>
             </li>
-            <li class="nav-item">
+
+            @auth
+             <li class="nav-item">
             <a class="nav-link {{ request()->is('movie/create') ? 'active' : '' }}" href="/movie/create">Input Movie</a>
 
             </li>
+             <li class="nav-item">
+            <a class="nav-link disabled">{{ Auth::user()->name }}</a>
+
+            </li>
+            @else
+            <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+            </li>
+            @endauth
            @php
   use App\Models\Movie;
 
@@ -38,7 +49,6 @@
       ->filter() // hilangkan null kategori kalau ada
       ->values();
 @endphp
-
 <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Genre
@@ -46,17 +56,17 @@
   <ul class="dropdown-menu">
     @foreach ($usedCategories as $category)
       <li>
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" href="{{ url('/?genre=' . urlencode($category->category_name)) }}">
           {{ $category->category_name }}
         </a>
       </li>
     @endforeach
   </ul>
 </li>
-
+{{--
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Coming Soon</a>
-            </li>
+            </li>--}}
           </ul>
 
           <form class="d-flex" role="search">

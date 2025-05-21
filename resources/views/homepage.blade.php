@@ -4,7 +4,13 @@
 
 @section('content')
 
-    <h1 class="mb-4">Latest Movie</h1>
+    <h1 class="mb-4">
+        @if(isset($category_name))
+            Genre: {{ $category_name }}
+        @else
+            Latest Movie
+        @endif
+    </h1>
 
     <div class="row g-4">
         @foreach($movies as $movie)
@@ -22,7 +28,7 @@
                         <div class="col-md-8 d-flex flex-column">
                             <div class="card-body d-flex flex-column flex-grow-1">
                                 <h5 class="card-title">{{ $movie->title }}</h5>
-                                <p class="card-text">{{ Str::words($movie->synopsis, 15) }}</p>
+                                <p class="card-text">{{ \Illuminate\Support\Str::words($movie->synopsis, 15) }}</p>
                                 <p class="card-text mt-auto">
                                     <small class="text-body-secondary">Year: {{ $movie->year }}</small>
                                 </p>
