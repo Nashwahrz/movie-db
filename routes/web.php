@@ -19,3 +19,6 @@ Route::get('/genre/{category_name}', [MovieController::class, 'index']);
 Route::get('/login', [AuthController::class,'formLogin'])->name('login');
 
 Route::post('/login', [AuthController::class,'login']);
+
+Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
+

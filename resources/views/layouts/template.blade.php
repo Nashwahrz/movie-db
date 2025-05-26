@@ -24,20 +24,29 @@
               <a class="nav-link  {{ request()->is('/') ? 'active' : '' }}" aria-current="page" href="/">Home</a>
             </li>
 
-            @auth
-             <li class="nav-item">
-            <a class="nav-link {{ request()->is('movie/create') ? 'active' : '' }}" href="/movie/create">Input Movie</a>
+           @auth
+  <li class="nav-item">
+    <a class="nav-link {{ request()->is('movie/create') ? 'active' : '' }}" href="/movie/create">Input Movie</a>
+  </li>
 
-            </li>
-             <li class="nav-item">
-            <a class="nav-link disabled">{{ Auth::user()->name }}</a>
+  <li class="nav-item">
+    <a class="nav-link disabled">{{ Auth::user()->name }}</a>
+  </li>
 
-            </li>
-            @else
-            <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-            </li>
-            @endauth
+  <li class="nav-item">
+    <form action="{{ route('logout') }}" method="POST">
+      @csrf
+      <button type="submit" class="nav-link btn btn-link text-white" style="text-decoration: none;">
+        Logout
+      </button>
+    </form>
+  </li>
+@else
+  <li class="nav-item">
+    <a class="nav-link" href="/login">Login</a>
+  </li>
+@endauth
+
            @php
   use App\Models\Movie;
 

@@ -25,4 +25,15 @@ class AuthController extends Controller
          ])->onlyInput('email');
 
     }
+
+    public function destroy(Request $request)
+      {
+    Auth::logout(); // keluarin user
+
+    $request->session()->invalidate(); // hancurkan session lama
+    $request->session()->regenerateToken(); // bikin token CSRF baru
+
+    return redirect('/login'); // arahkan ke login
+     }
+
 }
