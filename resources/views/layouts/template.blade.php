@@ -34,12 +34,13 @@
   </li>
 
   <li class="nav-item">
-    <form action="{{ route('logout') }}" method="POST">
-      @csrf
-      <button type="submit" class="nav-link btn btn-link text-white" style="text-decoration: none;">
-        Logout
-      </button>
-    </form>
+   <form action="{{ route('logout') }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin logout?')">
+  @csrf
+  <button type="submit" class="nav-link btn btn-link text-white" style="text-decoration: none;">
+    Logout
+  </button>
+</form>
+
   </li>
 @else
   <li class="nav-item">
