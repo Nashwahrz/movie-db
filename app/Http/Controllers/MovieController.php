@@ -58,7 +58,7 @@ class MovieController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.movie_form', compact('categories'));
+        return view('movie_form', compact('categories'));
     }
     public function store(Request $request)
     {
