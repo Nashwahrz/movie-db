@@ -33,7 +33,7 @@ class MovieController extends Controller
     // Ambil hasil movie
     $movies = $query->orderBy('created_at', 'desc')->paginate(6);
 
-    // Append query agar tetap ada saat pagination
+    // Append query agar tetap ada saat paginatio
     $movies->appends([
         'genre' => $genre,
         'search' => $search,
